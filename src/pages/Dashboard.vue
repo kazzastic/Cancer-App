@@ -73,6 +73,11 @@
             </div>
           </template>
         </chart-card> -->
+      <!-- <button @click="show">Open</button>
+      <modal name="my-first">
+        <button @click="hide">hide</button>
+        <p>Allo</p>
+      </modal> -->
       <div class="md-layout md-gutter md-alignment-center">
         <div
           class="md-layout-item md-medium-size-33 md-small-size-50 md-xsmall-size-100"
@@ -96,7 +101,7 @@
         class="md-layout-item md-medium-size-50 md-xsmall-size-100 md-size-25"
       >
         <md-button class="md-success md-lg" @click="generatePredictions">
-          Button
+          Upload
         </md-button>
       </div>
       <div class="md-layout-item" v-if="loading">
@@ -128,12 +133,12 @@
             <h3 class="title">{{ (recall * 100).toFixed(2) }}%</h3>
           </template>
 
-          <!-- <template slot="footer">
+          <template slot="footer">
             <div class="stats">
-              <md-icon>date_range</md-icon>
-              Last 24 Hours
+              <md-icon>show_chart</md-icon>
+              <b>Click for extended RECALL report</b>
             </div>
-          </template> -->
+          </template>
         </stats-card>
       </div>
       <div
@@ -154,64 +159,69 @@
             <h3 class="title">{{ (precision * 100).toFixed(2) }}%</h3>
           </template>
 
-          <!-- <template slot="footer">
+          <template slot="footer">
             <div class="stats">
-              <md-icon class="text-danger">warning</md-icon>
-              <a href="#pablo">Get More Space...</a>
+              <md-icon>show_chart</md-icon>
+              <b>Click for extended PRECISION report</b>
             </div>
-          </template> -->
+          </template>
         </stats-card>
       </div>
-      <div
-        v-if="recallFlag == true"
-        class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-33"
-      >
-        <chart-card
-          :chart-data="recallData.data"
-          :chart-options="recallData.options"
-          chart-type="Line"
-          data-background-color="pink"
+      <modal name="my-first" :width="1000" :height="330">
+        <div
+          class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-33"
         >
-          <template slot="content">
-            <h4 class="title">Extended Recall For All Classes</h4>
-            <p class="category">
-              <button @click="recallFlagChange(false)">Close</button>
-            </p>
-          </template>
+          <h4 id="textAlign"><b>Recall</b></h4>
+          <chart-card
+            :chart-data="recallData.data"
+            :chart-options="recallData.options"
+            chart-type="Line"
+            data-background-color="pink"
+          >
+            <template slot="content">
+              <h4 class="title">Extended Recall For All Classes</h4>
+              <!-- <p class="category">
+                <button @click="recallFlagChange">Close</button>
+              </p> -->
+            </template>
 
-          <template slot="footer">
-            <div class="stats">
-              <md-icon>access_time</md-icon>
-              updated as per predictions
-            </div>
-          </template>
-        </chart-card>
-      </div>
-      <div
-        v-if="precisionFlag == true"
-        class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-33"
-      >
-        <chart-card
-          :chart-data="precisionData.data"
-          :chart-options="precisionData.options"
-          chart-type="Line"
-          data-background-color="green"
+            <template slot="footer">
+              <div class="stats">
+                <md-icon>access_time</md-icon>
+                updated as per predictions
+              </div>
+            </template>
+          </chart-card>
+        </div>
+      </modal>
+      <modal name="my-second" :width="1000" :height="330">
+        <div
+          class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-33"
         >
-          <template slot="content">
-            <h4 class="title">Extended Precision For All Classes</h4>
-            <p class="category">
-              <button @click="precisionFlagChange(false)">Close</button>
-            </p>
-          </template>
+          <h4 id="textAlign"><b>Precision</b></h4>
 
-          <template slot="footer">
-            <div class="stats">
-              <md-icon>access_time</md-icon>
-              updated as per predictions
-            </div>
-          </template>
-        </chart-card>
-      </div>
+          <chart-card
+            :chart-data="precisionData.data"
+            :chart-options="precisionData.options"
+            chart-type="Line"
+            data-background-color="green"
+          >
+            <template slot="content">
+              <h4 class="title">Extended Precision For All Classes</h4>
+              <!-- <p class="category">
+                <button @click="precisionFlagChange">Close</button>
+              </p> -->
+            </template>
+
+            <template slot="footer">
+              <div class="stats">
+                <md-icon>access_time</md-icon>
+                updated as per predictions
+              </div>
+            </template>
+          </chart-card>
+        </div>
+      </modal>
       <!-- <div
         v-if="f1Flag == true"
         class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-33"
@@ -255,12 +265,12 @@
             <h3 class="title">{{ (f1 * 100).toFixed(2) }}%</h3>
           </template>
 
-          <!-- <template slot="footer">
+          <template slot="footer">
             <div class="stats">
-              <md-icon>local_offer</md-icon>
-              Tracked from Github
+              <md-icon>show_chart</md-icon>
+              <b>Click for extended F1 SCORE</b>
             </div>
-          </template> -->
+          </template>
         </stats-card>
       </div>
       <div
@@ -280,39 +290,41 @@
             <h3 class="title">{{ (accuracy * 100).toFixed(2) }}%</h3>
           </template>
 
-          <!-- <template slot="footer">
-            <div class="stats">
-              <md-icon>update</md-icon>
-              Just Updated
-            </div>
-          </template> -->
-        </stats-card>
-      </div>
-      <div
-        v-if="f1Flag == true"
-        class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-33"
-      >
-        <chart-card
-          :chart-data="f1Data.data"
-          :chart-options="f1Data.options"
-          chart-type="Line"
-          data-background-color="blue"
-        >
-          <template slot="content">
-            <h4 class="title">Extended Recall For All Classes</h4>
-            <p class="category">
-              <button @click="f1FlagChange(false)">Close</button>
-            </p>
-          </template>
-
           <template slot="footer">
             <div class="stats">
-              <md-icon>access_time</md-icon>
-              updated as per predictions
+              <md-icon>show_chart</md-icon>
+              <b>Nothing happens if you click this</b>
             </div>
           </template>
-        </chart-card>
+        </stats-card>
       </div>
+      <modal name="my-third" :width="1000" :height="330">
+        <div
+          class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-33"
+        >
+          <h4 id="textAlign"><b>F1 Scores</b></h4>
+          <chart-card
+            :chart-data="f1Data.data"
+            :chart-options="f1Data.options"
+            chart-type="Line"
+            data-background-color="blue"
+          >
+            <template slot="content">
+              <h4 class="title">Extended F1 Scores For All Classes</h4>
+              <!-- <p class="category">
+                <button @click="f1FlagChange(false)">Close</button>
+              </p> -->
+            </template>
+
+            <template slot="footer">
+              <div class="stats">
+                <md-icon>access_time</md-icon>
+                updated as per predictions
+              </div>
+            </template>
+          </chart-card>
+        </div>
+      </modal>
       <!-- <div
         class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-50"
       >
@@ -364,6 +376,7 @@ import ApiService from "../services/api-service";
 import PacmanLoader from "vue-spinner/src/PacmanLoader.vue";
 
 export default {
+  name: "MyComponent",
   components: {
     StatsCard,
     ChartCard,
@@ -382,8 +395,6 @@ export default {
       precision: "",
       f1: "",
       accuracy: "",
-      recallFlag: false,
-      precisionFlag: false,
       f1Flag: false,
       loading: false,
       recallData: {
@@ -572,7 +583,7 @@ export default {
         this.precision = report["weighted avg"].precision;
         this.recall = report["weighted avg"].recall;
         this.f1 = report["macro avg"]["f1-score"];
-        console.info(report);
+
         for (let i = 0; i < 10; i++) {
           // console.info(report[this.dailySalesChart.data.labels[i]].recall);
           this.recallData.data.series[0][i] =
@@ -592,15 +603,27 @@ export default {
         }
       } catch (error) {}
     },
-    recallFlagChange(flag) {
-      this.recallFlag = flag;
+    recallFlagChange() {
+      this.$modal.show("my-first");
     },
-    precisionFlagChange(flag) {
-      this.precisionFlag = flag;
+    precisionFlagChange() {
+      this.$modal.show("my-second");
     },
     f1FlagChange(flag) {
-      this.f1Flag = flag;
+      this.$modal.show("my-third");
     },
   },
 };
 </script>
+<style scoped>
+.md-card-stats .md-card-header i {
+  font-size: 36px !important;
+  line-height: 56px;
+  width: 90px;
+  height: 90px;
+  color: #ffffff !important;
+}
+#textAlign {
+  text-align: center;
+}
+</style>

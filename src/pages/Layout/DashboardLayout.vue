@@ -6,6 +6,10 @@
       :sidebar-background-image="sidebarBackgroundImage"
     >
       <mobile-menu slot="content"></mobile-menu>
+      <sidebar-link to="/csvGenerator">
+        <md-icon>bolt</md-icon>
+        <p>CSV converter</p>
+      </sidebar-link>
       <sidebar-link to="/dashboard">
         <md-icon>dashboard</md-icon>
         <p>Detection Panel</p>
@@ -42,14 +46,27 @@
 
     <div class="main-panel">
       <div style="text-align: center; margin: 5px; padding: 10px">
-        <img id="csrd" alt="CSRD logo" src="../../../assets/CSRD.png" />
-        <img id="ned" alt="Ned logo" src="../../../assets/logo.png" />
-        <img id="nibd" alt="Nipd logo" src="../../../assets/NIBD.png" />
+        <a href="https://csrd.neduet.edu.pk/"
+          ><img id="csrd" alt="CSRD logo" src="../../../assets/CSRD.png"
+        /></a>
+        <a href="https://www.neduet.edu.pk/"
+          ><img id="ned" alt="Ned logo" src="../../../assets/logo.png"
+        /></a>
+        <a href="https://www.nibd.edu.pk/"
+          ><img id="nibd" alt="Nipd logo" src="../../../assets/NIBD.png"
+        /></a>
         <br />
         <h2 id="h2">
           Cancer Detection Panel
         </h2>
-        <b>Please enter a CSV file of CBC test</b>
+        <b>Please enter a CSV file of CBC test</b><br />
+        <b
+          >Sample
+          <a
+            href="https://drive.google.com/uc?export=download&id=1iNUMFqYD578YeXUcdpZ4HgHRev4VNTaH"
+            >CSV</a
+          ></b
+        >
       </div>
 
       <fixed-plugin
@@ -91,21 +108,23 @@ export default {
 
 <style scoped>
 #ned {
-  width: 11%;
-  height: 90px;
+  width: 14%;
+  height: 120px;
   margin: 10px;
 }
 #nibd {
-  width: 10%;
-  height: 50px;
+  width: 6%;
+  height: 30px;
   margin: 10px;
+  float: right;
 }
 #csrd {
-  width: 11%;
-  height: 90px;
+  width: 5%;
+  height: 50px;
   margin: 10px;
+  float: left;
 }
 #h2 {
-  font-family: 'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
 }
 </style>
