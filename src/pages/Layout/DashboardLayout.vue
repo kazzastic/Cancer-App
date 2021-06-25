@@ -59,12 +59,12 @@
         <h2 id="h2">
           Cancer Detection Panel
         </h2>
-        <b>Please enter a CSV file of CBC test</b><br />
+        <b>Please enter a CSV file of CBC test</b><br /><br/>
         <b
-          >Sample
+          >Click for Sample
           <a
             href="https://drive.google.com/uc?export=download&id=1iNUMFqYD578YeXUcdpZ4HgHRev4VNTaH"
-            >CSV</a
+            >CSV<md-icon>download</md-icon></a
           ></b
         >
       </div>

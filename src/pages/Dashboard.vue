@@ -136,7 +136,7 @@
           <template slot="footer">
             <div class="stats">
               <md-icon>show_chart</md-icon>
-              <b>Click for extended RECALL report</b>
+              <b>Click for extended <a>RECALL</a> report</b>
             </div>
           </template>
         </stats-card>
@@ -162,7 +162,7 @@
           <template slot="footer">
             <div class="stats">
               <md-icon>show_chart</md-icon>
-              <b>Click for extended PRECISION report</b>
+              <b>Click for extended <a>PRECISION</a> report</b>
             </div>
           </template>
         </stats-card>
@@ -268,7 +268,7 @@
           <template slot="footer">
             <div class="stats">
               <md-icon>show_chart</md-icon>
-              <b>Click for extended F1 SCORE</b>
+              <b>Click for extended <a>F1</a> SCORE</b>
             </div>
           </template>
         </stats-card>
