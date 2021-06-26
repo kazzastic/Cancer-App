@@ -55,8 +55,7 @@
         <a href="https://www.nibd.edu.pk/"
           ><img id="nibd" alt="Nipd logo" src="../../../assets/NIBD.png"
         /></a>
-        <br />
-        <h2 id="h2">
+        <!-- <h2 id="h2">
           Cancer Detection Panel
         </h2>
         <b>Please enter a CSV file of CBC test</b><br /><br/>
@@ -66,7 +65,7 @@
             href="https://drive.google.com/uc?export=download&id=1iNUMFqYD578YeXUcdpZ4HgHRev4VNTaH"
             >CSV<md-icon>download</md-icon></a
           ></b
-        >
+        > -->
       </div>
 
       <fixed-plugin

@@ -9,7 +9,23 @@ class ApiService {
         headers: { "Content-Type": "multipart/form-data" },
         method: "post",
         url: "/predict",
-        data: formData
+        data: formData,
+      });
+      return data;
+    } catch (err) {
+      throw new Error(err);
+    }
+  }
+
+  async csvGenerator(csvFile) {
+    try {
+      const formData = new FormData();
+      formData.append("file", csvFile);
+      const { data } = await flaskBackendService.request({
+        headers: { "Content-Type": "multipart/form-data" },
+        method: "post",
+        url: "/genCSV",
+        data: formData,
       });
       return data;
     } catch (err) {

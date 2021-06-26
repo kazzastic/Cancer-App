@@ -78,6 +78,19 @@
         <button @click="hide">hide</button>
         <p>Allo</p>
       </modal> -->
+      <div class="main-panel" style="text-align:center;width:100%;">
+        <h2 id="h2">
+          Cancer Detection Panel
+        </h2>
+        <b>Please enter a CSV file of CBC test</b><br />
+        <b
+          >Click for Sample
+          <a
+            href="https://drive.google.com/uc?export=download&id=1iNUMFqYD578YeXUcdpZ4HgHRev4VNTaH"
+            >CSV<md-icon>download</md-icon></a
+          ></b
+        >
+      </div>
       <div class="md-layout md-gutter md-alignment-center">
         <div
           class="md-layout-item md-medium-size-33 md-small-size-50 md-xsmall-size-100"
@@ -625,5 +638,8 @@ export default {
 }
 #textAlign {
   text-align: center;
+}
+#h2 {
+  font-family: "Times New Roman", Times, serif;
 }
 </style>
