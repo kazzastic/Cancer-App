@@ -18,6 +18,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import App from "./App";
 
+/* eslint-disable */
 // router setup
 import routes from "./routes/routes";
 
@@ -47,7 +48,7 @@ Vue.use(GlobalDirectives);
 Vue.use(Notifications);
 Vue.use(VModal)
 
-/* eslint-disable */
+
 new Vue({
   el: "#app",
   render: h => h(App),
