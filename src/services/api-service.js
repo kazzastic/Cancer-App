@@ -26,6 +26,7 @@ class ApiService {
         method: "post",
         url: "/genCSV",
         data: formData,
+        // responseType: 'blob',
       });
       return data;
     } catch (err) {
