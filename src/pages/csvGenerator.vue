@@ -90,7 +90,7 @@ export default {
       } else {
         alert("FileReader are not supported in this browser.");
       }
-      console.info(this.csvFile);
+      // console.info(this.csvFile);
     },
     async generateCSV() {
       try {
@@ -98,9 +98,9 @@ export default {
         if (the_payload){
           this.response = true;
         }
-        console.info(the_payload);
+        // console.info(the_payload);
       } catch (error) {
-        console.error(error);
+        // console.error(error);
       }
     },
   },
