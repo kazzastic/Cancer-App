@@ -47,7 +47,7 @@ Vue.use(GlobalDirectives);
 Vue.use(Notifications);
 Vue.use(VModal)
 
-/* eslint-disable no-new */
+/* eslint-disable */
 new Vue({
   el: "#app",
   render: h => h(App),
