@@ -9,7 +9,7 @@ class ApiService {
         headers: { "Content-Type": "multipart/form-data" },
         method: "post",
         url: "/predict",
-        data: formData,
+        data: formData
       });
       return data;
     } catch (err) {
@@ -26,7 +26,7 @@ class ApiService {
         method: "post",
         url: "/genCSV",
         data: formData,
-        // responseType: 'blob',
+        responseType: "blob"
       });
       return data;
     } catch (err) {

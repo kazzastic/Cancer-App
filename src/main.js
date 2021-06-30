@@ -27,6 +27,9 @@ import GlobalComponents from "./globalComponents";
 import GlobalDirectives from "./globalDirectives";
 import Notifications from "./components/NotificationPlugin";
 import VModal from 'vue-js-modal'
+import Antd from "ant-design-vue";
+import "ant-design-vue/dist/antd.css";
+import VueApexCharts from "vue-apexcharts";
 
 // MaterialDashboard plugin
 import MaterialDashboard from "./material-dashboard";
@@ -47,6 +50,9 @@ Vue.use(GlobalComponents);
 Vue.use(GlobalDirectives);
 Vue.use(Notifications);
 Vue.use(VModal)
+Vue.use(VueApexCharts);
+Vue.component("apexchart", VueApexCharts);
+Vue.use(Antd);
 
 
 new Vue({

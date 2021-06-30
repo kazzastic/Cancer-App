@@ -14,15 +14,15 @@
         <md-icon>dashboard</md-icon>
         <p>Detection Panel</p>
       </sidebar-link>
-      <sidebar-link to="/user">
+      <sidebar-link to="/analysis">
         <md-icon>content_paste</md-icon>
         <p>Data Analysis</p>
       </sidebar-link>
-      <sidebar-link to="/table">
+      <sidebar-link to="/about">
         <md-icon>person</md-icon>
         <p>About Us</p>
       </sidebar-link>
-      <sidebar-link to="/typography">
+      <sidebar-link to="/docs">
         <md-icon>library_books</md-icon>
         <p>Documentation</p>
       </sidebar-link>
@@ -93,15 +93,15 @@ export default {
     //TopNavbar,
     DashboardContent,
     ContentFooter,
-    MobileMenu,
+    MobileMenu
     // FixedPlugin,
   },
   data() {
     return {
       sidebarBackground: "green",
-      sidebarBackgroundImage: require("@/assets/img/sidebar-2.jpg"),
+      sidebarBackgroundImage: require("@/assets/img/sidebar-2.jpg")
     };
-  },
+  }
 };
 </script>
 

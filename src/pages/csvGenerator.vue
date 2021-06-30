@@ -44,16 +44,25 @@
         </md-button>
       </div>
       <div class="md-layout-item" v-if="loading">
-        <pacman-loader
-          :loading="loading"
-          :color="color"
-          :size="size"
-        ></pacman-loader>
+        <a-spin v-if="loading">
+          <a-icon
+            slot="indicator"
+            type="loading"
+            style="font-size: 40px; margin-right: 50px"
+            spin
+          />
+        </a-spin>
       </div>
     </div>
-    <br/><br/>
+    <br /><br />
     <div v-if="response" style="text-align:center;">
-      <b>Click for output </b><b> <a href="#">CSV<md-icon>download</md-icon></a></b>
+      <b>Click for output </b
+      ><b>
+        <span @click="downloadBlob" class="fake-link" id="fake-link-1">
+          CSV
+          <md-icon>download</md-icon>
+        </span>
+      </b>
     </div>
   </div>
 </template>
@@ -69,9 +78,10 @@ export default {
   // }
   data() {
     return {
+      loading: false,
       csv: null,
       csvFile: null,
-      response: false,
+      response: null
     };
   },
   methods: {
@@ -80,8 +90,8 @@ export default {
         const reader = new FileReader();
         this.csvFile = e.target.files[0];
         reader.readAsText(e.target.files[0]);
-        reader.onload = (event) => (this.csv = event.target.result);
-        reader.onerror = (event) => {
+        reader.onload = event => (this.csv = event.target.result);
+        reader.onerror = event => {
           if (event.target.error.name === "NotReadableError") {
             alert("Cannot read file !");
           }
@@ -90,24 +100,45 @@ export default {
       } else {
         alert("FileReader are not supported in this browser.");
       }
-      // console.info(this.csvFile);
     },
     async generateCSV() {
       try {
-        let the_payload = ApiService.csvGenerator(this.csvFile);
-        if (the_payload){
-          this.response = true;
+        this.loading = true;
+        const blob = await ApiService.csvGenerator(this.csvFile);
+        if (blob) {
+          this.response = blob;
+          this.loading = false;
         }
-        // console.info(the_payload);
       } catch (error) {
-        // console.error(error);
+        alert(error);
+        this.loading = false;
       }
     },
-  },
+    downloadBlob() {
+      const blob = new Blob([this.response], { type: "application/zip" });
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      document.body.appendChild(link);
+      link.style = "display: none";
+      link.href = url;
+      link.download = "out.zip";
+      link.click();
+
+      setTimeout(() => {
+        window.URL.revokeObjectURL(url);
+        link.remove();
+      }, 100);
+    }
+  }
 };
 </script>
 <style scoped>
 #h2 {
   font-family: "Times New Roman", Times, serif;
+}
+.fake-link {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
 }
 </style>

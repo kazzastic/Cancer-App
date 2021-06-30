@@ -4,7 +4,9 @@
       <nav>
         <ul>
           <li>
-            <a href="https://www.linkedin.com/in/syed-shameer-sarwar-10932b171/">Shameer Server</a>
+            <a href="https://www.linkedin.com/in/syed-shameer-sarwar-10932b171/"
+              >Shameer Server</a
+            >
           </li>
           <li>
             <a href="https://www.linkedin.com/in/saad-muhammad-syed-0a7396182/">
@@ -17,7 +19,9 @@
             </a>
           </li>
           <li>
-            <a href="https://pbs.twimg.com/media/EsdWyOGXAAsFLXO?format=jpg&name=medium">
+            <a
+              href="https://pbs.twimg.com/media/EsdWyOGXAAsFLXO?format=jpg&name=medium"
+            >
               Finally semester
             </a>
           </li>
@@ -25,9 +29,8 @@
       </nav>
       <div class="copyright text-center">
         &copy; {{ new Date().getFullYear() }}
-        <a href="https://imgur.com/UaAYoSn" target="_blank"
-          >We</a
-        >, made with <i class="fa fa-heart heart"></i> for a better world
+        <a href="https://imgur.com/UaAYoSn" target="_blank">We</a>, made with
+        <i class="fa fa-heart heart"></i> for a better world
       </div>
     </div>
   </footer>

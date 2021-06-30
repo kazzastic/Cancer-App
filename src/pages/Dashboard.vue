@@ -113,16 +113,23 @@
       <div
         class="md-layout-item md-medium-size-50 md-xsmall-size-100 md-size-25"
       >
-        <md-button class="md-success md-lg" @click="generatePredictions">
+        <md-button
+          :disabled="!csv"
+          class="md-success md-lg"
+          @click="generatePredictions"
+        >
           Upload
         </md-button>
       </div>
       <div class="md-layout-item" v-if="loading">
-        <pacman-loader
-          :loading="loading"
-          :color="color"
-          :size="size"
-        ></pacman-loader>
+        <a-spin v-if="loading">
+          <a-icon
+            slot="indicator"
+            type="loading"
+            style="font-size: 60px; margin-right: 50px"
+            spin
+          />
+        </a-spin>
       </div>
       <!-- <div
         class="md-layout-item md-medium-size-50 md-xsmall-size-100 md-size-25"
@@ -383,20 +390,20 @@ import {
   ChartCard,
   NavTabsCard,
   NavTabsTable,
-  OrderedTable,
+  OrderedTable
 } from "@/components";
 import ApiService from "../services/api-service";
-import PacmanLoader from "vue-spinner/src/PacmanLoader.vue";
+// import PacmanLoader from "vue-spinner/src/PacmanLoader.vue";
 
 export default {
   name: "MyComponent",
   components: {
     StatsCard,
-    ChartCard,
+    ChartCard
     // NavTabsCard,
     // NavTabsTable,
     // OrderedTable,
-    PacmanLoader,
+    // PacmanLoader
   },
   data() {
     return {
@@ -422,13 +429,13 @@ export default {
             "MDS",
             "MDS/MPN",
             "MPN",
-            "NHL",
+            "NHL"
           ],
-          series: [[]],
+          series: [[]]
         },
         options: {
           lineSmooth: this.$Chartist.Interpolation.cardinal({
-            tension: 0,
+            tension: 0
           }),
           low: 0,
           high: 100, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
@@ -436,9 +443,9 @@ export default {
             top: 30,
             right: 0,
             bottom: 0,
-            left: 0,
-          },
-        },
+            left: 0
+          }
+        }
       },
       precisionData: {
         data: {
@@ -452,13 +459,13 @@ export default {
             "MDS",
             "MDS/MPN",
             "MPN",
-            "NHL",
+            "NHL"
           ],
-          series: [[]],
+          series: [[]]
         },
         options: {
           lineSmooth: this.$Chartist.Interpolation.cardinal({
-            tension: 0,
+            tension: 0
           }),
           low: 0,
           high: 100, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
@@ -466,9 +473,9 @@ export default {
             top: 30,
             right: 0,
             bottom: 0,
-            left: 0,
-          },
-        },
+            left: 0
+          }
+        }
       },
       f1Data: {
         data: {
@@ -482,13 +489,13 @@ export default {
             "MDS",
             "MDS/MPN",
             "MPN",
-            "NHL",
+            "NHL"
           ],
-          series: [[]],
+          series: [[]]
         },
         options: {
           lineSmooth: this.$Chartist.Interpolation.cardinal({
-            tension: 0,
+            tension: 0
           }),
           low: 0,
           high: 100, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
@@ -496,19 +503,19 @@ export default {
             top: 30,
             right: 0,
             bottom: 0,
-            left: 0,
-          },
-        },
+            left: 0
+          }
+        }
       },
       dataCompletedTasksChart: {
         data: {
           labels: ["12am", "3pm", "6pm", "9pm", "12pm", "3am", "6am", "9am"],
-          series: [[230, 750, 450, 300, 280, 240, 200, 190]],
+          series: [[230, 750, 450, 300, 280, 240, 200, 190]]
         },
 
         options: {
           lineSmooth: this.$Chartist.Interpolation.cardinal({
-            tension: 0,
+            tension: 0
           }),
           low: 0,
           high: 1000, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
@@ -516,9 +523,9 @@ export default {
             top: 0,
             right: 0,
             bottom: 0,
-            left: 0,
-          },
-        },
+            left: 0
+          }
+        }
       },
       emailsSubscriptionChart: {
         data: {
@@ -534,15 +541,13 @@ export default {
             "Se",
             "Oc",
             "No",
-            "De",
+            "De"
           ],
-          series: [
-            [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895],
-          ],
+          series: [[542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]]
         },
         options: {
           axisX: {
-            showGrid: false,
+            showGrid: false
           },
           low: 0,
           high: 1000,
@@ -550,8 +555,8 @@ export default {
             top: 0,
             right: 5,
             bottom: 0,
-            left: 0,
-          },
+            left: 0
+          }
         },
         responsiveOptions: [
           [
@@ -561,12 +566,12 @@ export default {
               axisX: {
                 labelInterpolationFnc: function(value) {
                   return value[0];
-                },
-              },
-            },
-          ],
-        ],
-      },
+                }
+              }
+            }
+          ]
+        ]
+      }
     };
   },
   methods: {
@@ -575,8 +580,8 @@ export default {
         const reader = new FileReader();
         this.csvFile = e.target.files[0];
         reader.readAsText(e.target.files[0]);
-        reader.onload = (event) => (this.csv = event.target.result);
-        reader.onerror = (event) => {
+        reader.onload = event => (this.csv = event.target.result);
+        reader.onerror = event => {
           if (event.target.error.name === "NotReadableError") {
             alert("Cannot read file !");
           }
@@ -589,6 +594,7 @@ export default {
     },
     async generatePredictions() {
       try {
+        this.loading = true;
         let { prediction, report } = await ApiService.generateDatasetPrediction(
           this.csvFile
         );
@@ -614,7 +620,11 @@ export default {
             report[this.f1Data.data.labels[i]]["f1-score"] * 100;
           // console.info("f1: " + this.f1Data.data.series[0][i]);
         }
-      } catch (error) {}
+        this.loading = false;
+      } catch (error) {
+        alert(error);
+        this.loading = false;
+      }
     },
     recallFlagChange() {
       this.$modal.show("my-first");
@@ -624,8 +634,8 @@ export default {
     },
     f1FlagChange(flag) {
       this.$modal.show("my-third");
-    },
-  },
+    }
+  }
 };
 </script>
 <style scoped>
