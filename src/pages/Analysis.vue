@@ -166,6 +166,8 @@ export default {
 </script>
 
 <style scoped>
+@import "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css";
+
 .panel {
   border: 2px solid #dfdfdf;
   box-shadow: rgba(0, 0, 0, 0.15) 0 1px 0 0;

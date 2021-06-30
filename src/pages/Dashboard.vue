@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <div class="md-layout">
+    <div>
       <!-- <div
         class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-33"
       >
@@ -78,7 +78,7 @@
         <button @click="hide">hide</button>
         <p>Allo</p>
       </modal> -->
-      <div class="main-panel" style="text-align:center;width:100%;">
+      <div style="text-align:center;">
         <h2 id="h2">
           Cancer Detection Panel
         </h2>
@@ -91,10 +91,9 @@
           ></b
         >
       </div>
-      <div class="md-layout md-gutter md-alignment-center">
-        <div
-          class="md-layout-item md-medium-size-33 md-small-size-50 md-xsmall-size-100"
-        >
+      <br /><br />
+      <div class="md-layout" style="margin: 10px">
+        <div class="md-layout-item">
           <label for="csv_file" class="control-label col-sm-3 text-right"
             >Dataset File to import:
           </label>
@@ -109,137 +108,128 @@
             />
           </div>
         </div>
-      </div>
-      <div
-        class="md-layout-item md-medium-size-50 md-xsmall-size-100 md-size-25"
-      >
-        <md-button
-          :disabled="!csv"
-          class="md-success md-lg"
-          @click="generatePredictions"
-        >
-          Upload
-        </md-button>
-      </div>
-      <div class="md-layout-item" v-if="loading">
-        <a-spin v-if="loading">
-          <a-icon
-            slot="indicator"
-            type="loading"
-            style="font-size: 60px; margin-right: 50px"
-            spin
-          />
-        </a-spin>
-      </div>
-      <!-- <div
-        class="md-layout-item md-medium-size-50 md-xsmall-size-100 md-size-25"
-      >
-      </div> -->
-      <div
-        class="md-layout-item md-medium-size-50 md-xsmall-size-100 md-size-25"
-        @click="recallFlagChange(true)"
-      >
-        <stats-card data-background-color="orange">
-          <template slot="header">
-            <md-icon
-              class="md-size-2x"
-              :md-src="require('../../assets/recall.svg')"
-            />
-            <!-- <md-icon class="category">store</md-icon> -->
-          </template>
-
-          <template slot="content">
-            <p class="category"><b>Recall</b></p>
-            <h3 class="title">{{ (recall * 100).toFixed(2) }}%</h3>
-          </template>
-
-          <template slot="footer">
-            <div class="stats">
-              <md-icon>show_chart</md-icon>
-              <b>Click for extended <a>RECALL</a> report</b>
-            </div>
-          </template>
-        </stats-card>
-      </div>
-      <div
-        class="md-layout-item md-medium-size-50 md-xsmall-size-100 md-size-25"
-        @click="precisionFlagChange(true)"
-      >
-        <stats-card data-background-color="orange">
-          <template slot="header">
-            <!-- <md-icon>content_copy</md-icon> -->
-            <md-icon
-              class="md-size-2x"
-              :md-src="require('../../assets/precision.svg')"
-            />
-          </template>
-
-          <template slot="content">
-            <p class="category"><b>Precision</b></p>
-            <h3 class="title">{{ (precision * 100).toFixed(2) }}%</h3>
-          </template>
-
-          <template slot="footer">
-            <div class="stats">
-              <md-icon>show_chart</md-icon>
-              <b>Click for extended <a>PRECISION</a> report</b>
-            </div>
-          </template>
-        </stats-card>
-      </div>
-      <modal name="my-first" :width="1000" :height="330">
-        <div
-          class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-33"
-        >
-          <h4 id="textAlign"><b>Recall</b></h4>
-          <chart-card
-            :chart-data="recallData.data"
-            :chart-options="recallData.options"
-            chart-type="Line"
-            data-background-color="pink"
+        <div class="md-layout-item">
+          <md-button
+            :disabled="!csv"
+            class="md-success md-lg"
+            @click="generatePredictions"
           >
+            Upload
+          </md-button>
+        </div>
+        <div class="md-layout-item" v-if="loading">
+          <a-spin v-if="loading">
+            <a-icon
+              slot="indicator"
+              type="loading"
+              style="font-size: 60px; margin-right: 50px"
+              spin
+            />
+          </a-spin>
+        </div>
+      </div>
+      <br />
+      <div class="md-layout" style="margin: 10px">
+        <div class="md-layout-item" @click="recallFlagChange(true)">
+          <stats-card data-background-color="orange">
+            <template slot="header">
+              <md-icon
+                class="md-size-2x"
+                :md-src="require('../../assets/recall.svg')"
+              />
+              <!-- <md-icon class="category">store</md-icon> -->
+            </template>
+
             <template slot="content">
-              <h4 class="title">Extended Recall For All Classes</h4>
-              <!-- <p class="category">
-                <button @click="recallFlagChange">Close</button>
-              </p> -->
+              <p class="category"><b>Recall</b></p>
+              <h3 class="title">{{ (recall * 100).toFixed(2) }}%</h3>
             </template>
 
             <template slot="footer">
               <div class="stats">
-                <md-icon>access_time</md-icon>
-                updated as per predictions
+                <md-icon>show_chart</md-icon>
+                <b>Click for extended <a>RECALL</a> report</b>
               </div>
             </template>
-          </chart-card>
+          </stats-card>
+        </div>
+        <div class="md-layout-item" @click="precisionFlagChange(true)">
+          <stats-card data-background-color="orange">
+            <template slot="header">
+              <!-- <md-icon>content_copy</md-icon> -->
+              <md-icon
+                class="md-size-2x"
+                :md-src="require('../../assets/precision.svg')"
+              />
+            </template>
+
+            <template slot="content">
+              <p class="category"><b>Precision</b></p>
+              <h3 class="title">{{ (precision * 100).toFixed(2) }}%</h3>
+            </template>
+
+            <template slot="footer">
+              <div class="stats">
+                <md-icon>show_chart</md-icon>
+                <b>Click for extended <a>PRECISION</a> report</b>
+              </div>
+            </template>
+          </stats-card>
+        </div>
+      </div>
+      <modal name="my-first" :width="1000" :height="330">
+        <div class="md-layout">
+          <div class="md-layout-item">
+            <h4 id="textAlign"><b>Recall</b></h4>
+            <chart-card
+              :chart-data="recallData.data"
+              :chart-options="recallData.options"
+              chart-type="Line"
+              data-background-color="pink"
+            >
+              <template slot="content">
+                <h4 class="title">Extended Recall For All Classes</h4>
+                <!-- <p class="category">
+                <button @click="recallFlagChange">Close</button>
+              </p> -->
+              </template>
+
+              <template slot="footer">
+                <div class="stats">
+                  <md-icon>access_time</md-icon>
+                  updated as per predictions
+                </div>
+              </template>
+            </chart-card>
+          </div>
         </div>
       </modal>
       <modal name="my-second" :width="1000" :height="330">
-        <div
-          class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-33"
-        >
-          <h4 id="textAlign"><b>Precision</b></h4>
+        <div class="md-layout">
+          <div class="md-layout-item">
+            <h4 id="textAlign"><b>Precision</b></h4>
 
-          <chart-card
-            :chart-data="precisionData.data"
-            :chart-options="precisionData.options"
-            chart-type="Line"
-            data-background-color="green"
-          >
-            <template slot="content">
-              <h4 class="title">Extended Precision For All Classes</h4>
-              <!-- <p class="category">
+            <chart-card
+              :chart-data="precisionData.data"
+              :chart-options="precisionData.options"
+              chart-type="Line"
+              data-background-color="green"
+            >
+              <template slot="content">
+                <h4 class="title">Extended Precision For All Classes</h4>
+                <!-- <p class="category">
                 <button @click="precisionFlagChange">Close</button>
               </p> -->
-            </template>
+              </template>
 
-            <template slot="footer">
-              <div class="stats">
-                <md-icon>access_time</md-icon>
-                updated as per predictions
-              </div>
-            </template>
-          </chart-card>
+              <template slot="footer">
+                <div class="stats">
+                  <md-icon>access_time</md-icon>
+                  updated as per predictions
+                </div>
+              </template>
+            </chart-card>
+          </div>
         </div>
       </modal>
       <!-- <div
@@ -267,82 +257,79 @@
           </template>
         </chart-card>
       </div> -->
-      <div
-        class="md-layout-item md-medium-size-50 md-xsmall-size-100 md-size-25"
-        @click="f1FlagChange(true)"
-      >
-        <stats-card data-background-color="orange">
-          <template slot="header">
-            <!-- <md-icon>info_outline</md-icon> -->
-            <md-icon
-              class="md-size-2x"
-              :md-src="require('../../assets/f1.svg')"
-            />
-          </template>
+      <div class="md-layout">
+        <div class="md-layout-item" @click="f1FlagChange(true)">
+          <stats-card data-background-color="orange">
+            <template slot="header">
+              <!-- <md-icon>info_outline</md-icon> -->
+              <md-icon
+                class="md-size-2x"
+                :md-src="require('../../assets/f1.svg')"
+              />
+            </template>
 
-          <template slot="content">
-            <p class="category"><b>F1 Score</b></p>
-            <h3 class="title">{{ (f1 * 100).toFixed(2) }}%</h3>
-          </template>
-
-          <template slot="footer">
-            <div class="stats">
-              <md-icon>show_chart</md-icon>
-              <b>Click for extended <a>F1</a> SCORE</b>
-            </div>
-          </template>
-        </stats-card>
-      </div>
-      <div
-        class="md-layout-item md-medium-size-50 md-xsmall-size-100 md-size-25"
-      >
-        <stats-card data-background-color="orange">
-          <template slot="header">
-            <!-- <i class="fab fa-twitter"></i> -->
-            <md-icon
-              class="md-size-2x"
-              :md-src="require('../../assets/acc.svg')"
-            />
-          </template>
-
-          <template slot="content">
-            <p class="category"><b>Accuracy</b></p>
-            <h3 class="title">{{ (accuracy * 100).toFixed(2) }}%</h3>
-          </template>
-
-          <template slot="footer">
-            <div class="stats">
-              <md-icon>show_chart</md-icon>
-              <b>Nothing happens if you click this</b>
-            </div>
-          </template>
-        </stats-card>
-      </div>
-      <modal name="my-third" :width="1000" :height="330">
-        <div
-          class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-33"
-        >
-          <h4 id="textAlign"><b>F1 Scores</b></h4>
-          <chart-card
-            :chart-data="f1Data.data"
-            :chart-options="f1Data.options"
-            chart-type="Line"
-            data-background-color="blue"
-          >
             <template slot="content">
-              <h4 class="title">Extended F1 Scores For All Classes</h4>
-              <!-- <p class="category">
-                <button @click="f1FlagChange(false)">Close</button>
-              </p> -->
+              <p class="category"><b>F1 Score</b></p>
+              <h3 class="title">{{ (f1 * 100).toFixed(2) }}%</h3>
             </template>
 
             <template slot="footer">
               <div class="stats">
-                <md-icon>access_time</md-icon>
-                updated as per predictions
+                <md-icon>show_chart</md-icon>
+                <b>Click for extended <a>F1</a> SCORE</b>
               </div>
             </template>
-          </chart-card>
+          </stats-card>
+        </div>
+        <div class="md-layout-item">
+          <stats-card data-background-color="orange">
+            <template slot="header">
+              <!-- <i class="fab fa-twitter"></i> -->
+              <md-icon
+                class="md-size-2x"
+                :md-src="require('../../assets/acc.svg')"
+              />
+            </template>
+
+            <template slot="content">
+              <p class="category"><b>Accuracy</b></p>
+              <h3 class="title">{{ (accuracy * 100).toFixed(2) }}%</h3>
+            </template>
+
+            <template slot="footer">
+              <div class="stats">
+                <md-icon>show_chart</md-icon>
+                <b>Nothing happens if you click this</b>
+              </div>
+            </template>
+          </stats-card>
+        </div>
+      </div>
+      <modal name="my-third" :width="1000" :height="330">
+        <div class="md-layout">
+          <div class="md-layout-item">
+            <h4 id="textAlign"><b>F1 Scores</b></h4>
+            <chart-card
+              :chart-data="f1Data.data"
+              :chart-options="f1Data.options"
+              chart-type="Line"
+              data-background-color="blue"
+            >
+              <template slot="content">
+                <h4 class="title">Extended F1 Scores For All Classes</h4>
+                <!-- <p class="category">
+                <button @click="f1FlagChange(false)">Close</button>
+              </p> -->
+              </template>
+
+              <template slot="footer">
+                <div class="stats">
+                  <md-icon>access_time</md-icon>
+                  updated as per predictions
+                </div>
+              </template>
+            </chart-card>
+          </div>
         </div>
       </modal>
       <!-- <div
