@@ -1,13 +1,13 @@
 <template>
   <div class="content">
-    <div class="md-layout">
+    <div>
       <!-- <div class="md-layout-item md-medium-size-100 md-size-66">
         <edit-profile-form data-background-color="orange"> </edit-profile-form>
       </div>
       <div class="md-layout-item md-medium-size-100 md-size-33">
         <user-card> </user-card>
       </div> -->
-      <div class="main-panel" style="text-align:center;width:100%;">
+      <div style="text-align:center;width:100%;">
         <h2 id="h2">
           CSV conversion Panel
         </h2>
@@ -17,10 +17,9 @@
           used to training!</b
         ><br /><br />
       </div>
-      <div class="md-layout md-gutter md-alignment-center">
-        <div
-          class="md-layout-item md-medium-size-33 md-small-size-50 md-xsmall-size-100"
-        >
+      <br />
+      <div class="md-layout">
+        <div class="md-layout-item">
           <label for="csv_file" class="control-label col-sm-3 text-right"
             >Dataset File to import:
           </label>
@@ -35,23 +34,21 @@
             />
           </div>
         </div>
-      </div>
-      <div
-        class="md-layout-item md-medium-size-50 md-xsmall-size-100 md-size-25"
-      >
-        <md-button class="md-success md-lg" @click="generateCSV">
-          Upload
-        </md-button>
-      </div>
-      <div class="md-layout-item" v-if="loading">
-        <a-spin v-if="loading">
-          <a-icon
-            slot="indicator"
-            type="loading"
-            style="font-size: 40px; margin-right: 50px"
-            spin
-          />
-        </a-spin>
+        <div class="md-layout-item">
+          <md-button class="md-success md-lg" @click="generateCSV">
+            Upload
+          </md-button>
+        </div>
+        <div class="md-layout-item" v-if="loading">
+          <a-spin v-if="loading">
+            <a-icon
+              slot="indicator"
+              type="loading"
+              style="font-size: 40px; margin-right: 50px"
+              spin
+            />
+          </a-spin>
+        </div>
       </div>
     </div>
     <br /><br />
