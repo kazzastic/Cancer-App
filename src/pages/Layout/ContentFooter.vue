@@ -4,6 +4,11 @@
       <nav>
         <ul>
           <li>
+            <a href="https://www.linkedin.com/in/dr-najeed-ahmed-khan-a25a932/?originalSubdomain=uk">
+              Dr. Najeed Ahmed
+            </a>
+          </li>
+          <li>
             <a href="https://www.linkedin.com/in/syed-shameer-sarwar-10932b171/"
               >Shameer Server</a
             >
@@ -16,6 +21,11 @@
           <li>
             <a href="https://twitter.com/kazzastic">
               Kazim :D
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              Dr. Zeeshan Haider
             </a>
           </li>
           <li>
